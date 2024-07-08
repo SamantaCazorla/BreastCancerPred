@@ -110,7 +110,9 @@ def get_radar_chart(input_data):
           visible=True,
           range=[0, 1]
         )),
-      showlegend=True
+      showlegend=True,
+       width = 600,  # Adjust width as needed
+       height = 600  # Adjust height as needed
     )
     return fig
 
@@ -168,13 +170,13 @@ def main():
         st.write("Please connect this app to your cytology lab to help diagnose breast cancer form your tissue sample. This app predicts using a machine learning model whether a breast mass is benign or malignant based on the measurements it receives from your cytosis lab. You can also update the measurements by hand using the sliders in the sidebar. ")
 
     # Add radar chart and the predictions from our model:
-    col4, col5 = st.columns([3, 1])
+    col4, col5, col6 = st.columns([1, 4, 2])
 
-    with col4:
+    with col5:
         radar_chart = get_radar_chart(input_data)
         st.plotly_chart(radar_chart)
         
-    with col5:
+    with col6:
         add_predictions(input_data)
 
 # To check that we read from the correct "main" file before run the function
